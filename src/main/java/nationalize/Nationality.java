@@ -3,12 +3,18 @@ package nationalize;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 
 public class Nationality {
 
     private long count;
     private String name;
-
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.NO_CLASS_NAME_STYLE);
+    }
     @SerializedName("country")
     private List<Country> countries;
 
@@ -46,7 +52,10 @@ public class Nationality {
 
         private String countryId;
         private float probability;
-
+        @Override
+        public String toString() {
+            return ReflectionToStringBuilder.toString(this, ToStringStyle.NO_CLASS_NAME_STYLE);
+        }
         public Country(String countryId, float probability) {
             this.countryId = countryId;
             this.probability = probability;
